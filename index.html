@@ -99,6 +99,7 @@ const yesBtn = document.getElementById("yesBtn");
 const funnyText = document.getElementById("funnyText");
 
 let yesSize = 20;
+let phraseIndex = 0;
 
 const phrases = [
     "C'monnnnnn Mannnn",
@@ -113,8 +114,13 @@ const phrases = [
 ];
 
 noBtn.onclick = () => {
-    const random = phrases[Math.floor(Math.random() * phrases.length)];
-    funnyText.textContent = random;
+
+    funnyText.textContent = phrases[phraseIndex];
+
+    phraseIndex++;
+    if (phraseIndex >= phrases.length) {
+        phraseIndex = 0; // loop back to start
+    }
 
     yesSize += 8;
     yesBtn.style.fontSize = yesSize + "px";
